@@ -32,9 +32,9 @@ App({
             });
           } else {
             const callback = function () {
-              console.group('数据库文档')
-              console.log('https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/database.html')
-              console.groupEnd()
+              console.group('数据库文档');
+              console.log('https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/database.html');
+              console.groupEnd();
             };
           }
         }

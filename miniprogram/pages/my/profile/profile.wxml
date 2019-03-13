@@ -1,0 +1,31 @@
+<!--miniprogram/pages/my/profile/profile.wxml-->
+<van-cell-group>
+  <van-field
+    value="{{ username }}"
+    required
+    clearable
+    label="联系人"
+    icon="question-o"
+    placeholder="该如何称呼您？"
+    bind:click-icon="onClickIcon"
+  />
+
+  <van-field
+    value="{{ phoneNumber }}"
+    label="联系方式"
+    placeholder="填入您的手机号码"
+    required
+    border="{{ false }}"
+  />
+
+  <van-cell
+    title="所在地区"
+    value="{{ address }}"
+    is-link
+  />
+
+  <van-cell>
+    <wux-textarea rows="3" label="详细地址" placeholder="请输入尽可能精准的地址" />
+  </van-cell>
+
+</van-cell-group>

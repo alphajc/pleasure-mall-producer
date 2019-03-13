@@ -1,0 +1,27 @@
+<!--miniprogram/pages/my/index.wxml-->
+<wux-toast id="wux-toast" />
+<view class="page">
+  <view class="userinfo">
+    <wux-button block outline type="balanced" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 
+    <wux-badge dot="{{ true }}">
+     获取头像昵称 
+    </wux-badge>
+    </wux-button>
+    <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" lazy-load="true" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="page__bd">
+    <wux-cell-group title="个人资料">
+      <wux-cell title="联系人" extra="{{userInfo.name || '请补充相关资料'}}"></wux-cell>
+      <wux-cell title="联系电话" extra="{{userInfo.phoneNumber || '请补充相关资料'}}"></wux-cell>
+      <wux-cell title="联系地址" label="{{userInfo.addressDetail || ''}}" extra="{{userInfo.address || '请补充相关资料'}}"></wux-cell>
+    </wux-cell-group>
+    <wux-button block type="balanced" bindtap="modifyProfile">
+      <wux-badge dot="{{ !userInfo.name || !userInfo.phoneNumber || !userInfo.address }}">
+      修改个人资料
+      </wux-badge>
+    </wux-button>
+  </view>
+</view>

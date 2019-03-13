@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "wux-cell-group": "/plugins/wux/cell-group/index",
+    "wux-cell": "/plugins/wux/cell/index",
+    "wux-button": "/plugins/wux/button/index",
+    "wux-badge": "/plugins/wux/badge/index",
+    "wux-toast": "/plugins/wux/toast/index"
+  }
+}

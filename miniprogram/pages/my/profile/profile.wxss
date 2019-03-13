@@ -1,0 +1,4 @@
+/* miniprogram/pages/my/profile/profile.wxss */
+.wux-textarea__label {
+  color: #333;
+}

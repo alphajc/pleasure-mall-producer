@@ -1,21 +1,22 @@
 {
-  "debug": true,
   "pages": [
-    "pages/commodities/index/index",
-    "pages/my/index/index"
+    "pages/commodities/index",
+    "pages/my/index",
+    "pages/auth/auth",
+    "pages/my/profile/profile"
   ],
   "tabBar": {
-    "color": "#000",
-    "selectedColor": "#42C93A",
-    "backgroundColor": "#f6f6f6",
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/commodities/index/index",
-        "text": "商品"
+        "pagePath": "pages/commodities/index"
       },
       {
-        "pagePath": "pages/my/index/index",
-        "text": "我的"
+        "pagePath": "pages/my/index"
       }
     ]
   },
@@ -25,5 +26,11 @@
     "navigationBarBackgroundColor": "#42C93A",
     "navigationBarTitleText": "普乐商城生产端",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于上门装车"
+    }
+  },
+  "usingComponents": {}
 }
