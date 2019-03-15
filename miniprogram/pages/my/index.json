@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "我的账户",
   "usingComponents": {
     "wux-cell-group": "/plugins/wux/cell-group/index",
     "wux-cell": "/plugins/wux/cell/index",

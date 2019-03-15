@@ -29,7 +29,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#33cd5f",
     "navigationBarTitleText": "普乐商城生产端",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "permission": {
     "scope.userLocation": {

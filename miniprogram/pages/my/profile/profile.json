@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "个人信息",
   "usingComponents": {
     "van-popup": "/plugins/vant/popup/index",
     "van-area": "/plugins/vant/area/index",
