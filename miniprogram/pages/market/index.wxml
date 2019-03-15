@@ -1,2 +1,39 @@
 <!--miniprogram/pages/market/index.wxml-->
-<view>主页</view>
+<view class="VerticalBox">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 50px)">
+    <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{classes}}" wx:for-item="cla" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{ cla }}
+    </view>
+  </scroll-view>
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 50px)" scroll-into-view="main-id-{{TabCur}}">
+    <view class="padding-top padding-lr" wx:for="{{classes}}" wx:for-item="cla" wx:key id="main-id-{{index}}">
+      <view class='cu-bar solid-bottom bg-white'>
+        <view class='action'>
+          <text class='icon-title text-green'> {{cla}} </text>
+        </view>
+      </view>
+      <view class="cu-card article {{isCard?'no-card':''}}">
+        <view wx:for="{{goods[cla]}}" wx:key class="cu-item shadow">
+          <view class="title">{{item.name}}</view>
+          <view class="content">
+            <image src="{{item.img}}" mode="aspectFill"></image>
+            <view class="desc">
+              <view class='text-content'>
+                {{item.notes}}
+                <view class='action'>
+                  <view class='text-grey text-xs'>
+                    <wux-timeago to="{{ item.commit_time }}" lang="zh_CN" refreshable />
+                  </view>
+                </view>
+
+              </view>
+              <view>
+                <view class='cu-tag bg-red light sm round'>{{item.origin}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

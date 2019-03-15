@@ -16,6 +16,7 @@ App({
       this.db.producers = db.collection("producers");
       this.db.inventories = db.collection("inventories");
       this.db.goods = db.collection("goods");
+      this.db.classes = db.collection("classes");
 
       // 登录
       wx.login({
