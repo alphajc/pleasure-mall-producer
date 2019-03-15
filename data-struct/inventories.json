@@ -1,0 +1,21 @@
+{
+    "uid": "oKWEM5AgiB3xCduZzqkhDfDBvZjs",
+    "gid": "5c8af0d0b32b1c04f7e5051b",
+    "level": "A",
+    "inventory": 1800,
+    "price": 4.6,
+    "mini_sales": 100,
+    "commit_time": {
+      "$date": "2019-03-15T07:15:39.267Z"
+    },
+    "history": [
+        {
+            "price": 5.0,
+            "inventory": 2000,
+            "mini_sales": 200,
+            "commit_time": {
+              "$date": "2019-03-01T17:25:31.284Z"
+            }
+        }
+    ]
+}

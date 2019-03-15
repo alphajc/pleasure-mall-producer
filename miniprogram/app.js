@@ -9,6 +9,13 @@ App({
       wx.cloud.init({
         traceUser: true,
       });
+      const db = wx.cloud.database({
+        env: "test-39237a"
+      });
+
+      this.db.producers = db.collection("producers");
+      this.db.inventories = db.collection("inventories");
+      this.db.goods = db.collection("goods");
 
       // 登录
       wx.login({
@@ -21,6 +28,14 @@ App({
               success: res => {
                 this.globalData.unionid = res.result.unionid;
                 this.globalData.openid = res.result.openid;
+                db.collection("producers")
+                  .doc(res.result.openid)
+                  .get()
+                  .then(res => this.globalData.userInfo = Object.assign(this.globalData.userInfo,res.data))
+                  .catch(e => {
+                    console.log(e);
+                    this.globalData.hasIssueForMine = true;
+                  });
               },
               fail: err => {
                 wx.showToast({
@@ -62,6 +77,10 @@ App({
     }
   },
   globalData: {
-    userInfo: null
-  }
+    userInfo: {},
+    hasIssueForMine: false,
+    hasIssueForShelf: false,
+    hasIssueForMarket: false
+  },
+  db: {}
 });

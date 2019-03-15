@@ -1,3 +1,4 @@
+// miniprogram/pages/market/index.js
 Component({
   pageLifetimes: {
     show() {
@@ -7,6 +8,14 @@ Component({
           selected: 0
         })
       }
+    }
+  },
+  lifetimes: {
+    attached() {
+      console.log('market attached.');
+    },
+    detached() {
+      console.log('market detached.');
     }
   }
 })

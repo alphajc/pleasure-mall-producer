@@ -1,0 +1,21 @@
+{
+  "_id": "oKWEM5AgiB3xCduZzqkhDfDBvZjs",
+  "language": "en",
+  "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/gML2yuHByTibqZkWA8ibWL5rZEEfvBwf8IxIYL4kMvEP01Wqia8ibEcGI1YYq2JdXAZcfl3LUeCicEc98xbqeU85G9w/132",
+  "address_detail": "广济乡连鳌村1组",
+  "nickName": "Jerry",
+  "gender": {
+    "$numberLong": "1"
+  },
+  "province": "Sichuan",
+  "username": "陈家俊",
+  "phone_number": "13438803310",
+  "address_code": "511402",
+  "country": "China",
+  "address": "四川省眉山市东坡区",
+  "register_time": {
+    "$date": "2019-03-14T13:15:39.267Z"
+  },
+  "city": "Chengdu",
+  "_openid": "oKWEM5AgiB3xCduZzqkhDfDBvZjs"
+}

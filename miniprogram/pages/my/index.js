@@ -1,5 +1,7 @@
 // miniprogram/pages/my/index.js
-import { $wuxToast } from '../../plugins/wux/index'
+import {
+  $wuxToast
+} from '../../plugins/wux/index'
 
 const app = getApp();
 
@@ -15,18 +17,8 @@ Component({
 
   pageLifetimes: {
     show() {
-      if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().setData({
-          selected: 1
-        });
-      }
-    }
-  },
+      let hasContactInfo = false;
 
-  lifetimes: {
-    attached() {
-      // 在组件实例进入页面节点树时执行
       if (app.globalData.userInfo) {
         this.setData({
           userInfo: app.globalData.userInfo,
@@ -66,6 +58,26 @@ Component({
           }
         });
       }
+
+      if (this.data.userInfo.username && this.data.userInfo.phone_number && this.data.userInfo.address && this.data.userInfo.address_detail) {
+        hasContactInfo = true;
+      }
+
+      app.globalData.hasIssueForMine = !this.data.hasUserInfo || !hasContactInfo;
+
+      if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 2,
+          'list[2].dot': app.globalData.hasIssueForMine
+        });
+      }
+    }
+  },
+
+  lifetimes: {
+    attached() {
+      // 在组件实例进入页面节点树时执行
     },
     detached() {
       // 在组件实例被从页面节点树移除时执行

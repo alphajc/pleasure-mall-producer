@@ -15,3 +15,7 @@
 .userinfo-nickname {
   color: #aaa;
 }
+
+#commit-button button {
+  margin-top: 100rpx!important;
+}

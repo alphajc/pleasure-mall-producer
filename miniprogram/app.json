@@ -1,19 +1,23 @@
 {
   "pages": [
-    "pages/commodities/index",
+    "pages/market/index",
     "pages/my/index",
     "pages/auth/auth",
-    "pages/my/profile/profile"
+    "pages/my/profile/profile",
+    "pages/shelf/index"
   ],
   "tabBar": {
     "custom": true,
     "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
+    "selectedColor": "#33cd5f",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/commodities/index"
+        "pagePath": "pages/market/index"
+      },
+      {
+        "pagePath": "pages/shelf/index"
       },
       {
         "pagePath": "pages/my/index"
@@ -23,7 +27,7 @@
   "window": {
     "backgroundColor": "#F2F2F2",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#42C93A",
+    "navigationBarBackgroundColor": "#33cd5f",
     "navigationBarTitleText": "普乐商城生产端",
     "navigationBarTextStyle": "black"
   },

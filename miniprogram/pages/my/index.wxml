@@ -13,15 +13,18 @@
     </block>
   </view>
   <view class="page__bd">
+
     <wux-cell-group title="个人资料">
-      <wux-cell title="联系人" extra="{{userInfo.name || '请补充相关资料'}}"></wux-cell>
-      <wux-cell title="联系电话" extra="{{userInfo.phoneNumber || '请补充相关资料'}}"></wux-cell>
-      <wux-cell title="联系地址" label="{{userInfo.addressDetail || ''}}" extra="{{userInfo.address || '请补充相关资料'}}"></wux-cell>
+      <wux-cell title="联系人" extra="{{userInfo.username || '请补充相关资料'}}"></wux-cell>
+      <wux-cell title="联系电话" extra="{{userInfo.phone_number || '请补充相关资料'}}"></wux-cell>
+      <wux-cell title="联系地址" label="{{userInfo.address_detail || ''}}" extra="{{userInfo.address || '请补充相关资料'}}"></wux-cell>
     </wux-cell-group>
-    <wux-button block type="balanced" bindtap="modifyProfile">
-      <wux-badge dot="{{ !userInfo.name || !userInfo.phoneNumber || !userInfo.address }}">
+
+    <wux-button id="commit-button" block type="balanced" bindtap="modifyProfile">
+      <wux-badge dot="{{ !userInfo.username || !userInfo.phone_number || !userInfo.address || !userInfo.address_detail }}">
       修改个人资料
       </wux-badge>
     </wux-button>
+    
   </view>
 </view>

@@ -5,6 +5,8 @@
     "van-field": "/plugins/vant/field/index",
     "van-cell": "/plugins/vant/cell/index",
     "van-cell-group": "/plugins/vant/cell-group/index",
-    "wux-textarea": "/plugins/wux/textarea/index"
+    "wux-button": "/plugins/wux/button/index",
+    "wux-icon": "/plugins/wux/icon/index",
+    "wux-toast": "/plugins/wux/toast/index"
   }
 }
