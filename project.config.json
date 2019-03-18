@@ -11,7 +11,7 @@
 	},
 	"appid": "wx48f48b319e168b01",
 	"projectname": "pleasure-mall-producer",
-	"libVersion": "2.5.2",
+	"libVersion": "2.6.0",
 	"compileType": "miniprogram",
 	"condition": {
 		"search": {

@@ -86,7 +86,7 @@ Component({
   methods: {
     modifyProfile() {
       wx.navigateTo({
-        url: 'profile/profile',
+        url: 'profile/index',
       })
     },
     getUserInfo() {

@@ -2,9 +2,11 @@
   "pages": [
     "pages/market/index",
     "pages/my/index",
-    "pages/auth/auth",
-    "pages/my/profile/profile",
-    "pages/shelf/index"
+    "pages/auth/index",
+    "pages/my/profile/index",
+    "pages/shelf/index",
+    "pages/market/commodity/index",
+    "pages/market/result/index"
   ],
   "tabBar": {
     "custom": true,

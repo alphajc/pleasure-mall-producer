@@ -1,0 +1,4 @@
+/* miniprogram/pages/market/commodity/commodity.wxss */
+page {
+  background-color: #fff;
+}

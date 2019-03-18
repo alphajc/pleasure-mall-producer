@@ -1,7 +1,14 @@
 //app.js
+
+import {
+  getClassesRefresh,
+  getGoodsRefresh,
+  getInventoriesRefresh
+} from './utils/db-cache'
+
 App({
-  onLaunch: function () {
-    
+  onLaunch: function() {
+
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力');
     } else {
@@ -32,7 +39,7 @@ App({
                 db.collection("producers")
                   .doc(res.result.openid)
                   .get()
-                  .then(res => this.globalData.userInfo = Object.assign(this.globalData.userInfo,res.data))
+                  .then(res => this.globalData.userInfo = Object.assign(this.globalData.userInfo, res.data))
                   .catch(e => {
                     console.log(e);
                     this.globalData.hasIssueForMine = true;
@@ -47,7 +54,7 @@ App({
               }
             });
           } else {
-            const callback = function () {
+            const callback = function() {
               console.group('数据库文档');
               console.log('https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/database.html');
               console.groupEnd();
@@ -55,6 +62,7 @@ App({
           }
         }
       });
+
       // 获取用户信息
       wx.getSetting({
         success: res => {
@@ -75,6 +83,10 @@ App({
           }
         }
       });
+      
+      getClassesRefresh();
+      getGoodsRefresh();
+      getInventoriesRefresh();
     }
   },
   globalData: {

@@ -26,7 +26,7 @@ Component({
   },
   lifetimes: {
     created() {
-      console.log('tabbar created');
+      // console.log('tabbar created');
     },
     attached() {
       this.setData({
@@ -34,10 +34,10 @@ Component({
         'list[1].dot': app.globalData.hasIssueForShelf || false,
         'list[2].dot': app.globalData.hasIssueForMine || false,
       });
-      console.log('tabbar attached');
+      // console.log('tabbar attached');
     },
     detached() {
-      console.log('tabbar detached');
+      // console.log('tabbar detached');
     }
   },
   methods: {

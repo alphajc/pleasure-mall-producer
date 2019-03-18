@@ -1,5 +1,9 @@
 {
   "component": true,
   "navigationBarTitleText": "我的货架",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-card": "/plugins/vant/card/index",
+    "wux-prompt": "/plugins/wux/prompt/index",
+    "van-button": "/plugins/vant/button/index"
+  }
 }

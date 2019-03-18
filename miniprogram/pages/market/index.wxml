@@ -12,23 +12,21 @@
           <text class='icon-title text-green'> {{cla}} </text>
         </view>
       </view>
-      <view class="cu-card article {{isCard?'no-card':''}}">
-        <view wx:for="{{goods[cla]}}" wx:key class="cu-item shadow">
+      <view class="cu-card article">
+        <view wx:for="{{goods[cla]}}" wx:key class="cu-item shadow" bindtap="selectGoods" data-commodity="{{item}}">
           <view class="title">{{item.name}}</view>
           <view class="content">
             <image src="{{item.img}}" mode="aspectFill"></image>
             <view class="desc">
               <view class='text-content'>
-                {{item.notes}}
-                <view class='action'>
-                  <view class='text-grey text-xs'>
-                    <wux-timeago to="{{ item.commit_time }}" lang="zh_CN" refreshable />
-                  </view>
+                <view class='text-sm'>
+                  <text class='text-grey'>{{item.notes}}</text>
                 </view>
-
               </view>
               <view>
-                <view class='cu-tag bg-red light sm round'>{{item.origin}}</view>
+                <view class='cu-tag bg-red light sm round' wx:for="{{item.features}}" wx:for-item="feature" wx:key>
+                {{feature}}
+                </view>
               </view>
             </view>
           </view>

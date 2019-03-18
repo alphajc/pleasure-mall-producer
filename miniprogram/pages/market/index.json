@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "普乐市场",
   "usingComponents": {
-    "wux-timeago": "/plugins/wux/timeago/index"
   }
 }
