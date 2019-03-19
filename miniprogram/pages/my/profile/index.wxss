@@ -1,7 +1,1 @@
 /* miniprogram/pages/my/profile/profile.wxss */
-#submit-button {
-  background-color:#33cd5f!important;
-  color:#fff!important;
-  font-size:32rpx!important;
-  margin-top: 100rpx!important;
-}

@@ -1,36 +1,38 @@
 // miniprogram/pages/my/index.js
-import {
-  $wuxToast
-} from '../../plugins/wux/index'
+import {upsertProfile} from './utils/persist';
 
 const app = getApp();
+const appData = app.globalData;
 
 Component({
   /**
    * 组件的初始数据
    */
   data: {
-    userInfo: {},
-    hasUserInfo: false,
+    userInfo: {
+      address: []
+    },
+    hasAvatar: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   pageLifetimes: {
     show() {
-      let hasContactInfo = false;
-
-      if (app.globalData.userInfo) {
+      if (Object.keys(appData.userInfo).keys !== 0) {
+        let hasAvatar = false;
+        if (appData.userInfo.avatarUrl) {
+          hasAvatar = true;
+        }
         this.setData({
-          userInfo: app.globalData.userInfo,
-          hasUserInfo: true
+          userInfo: appData.userInfo,
+          hasAvatar
         });
       } else if (this.data.canIUse) {
         // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
         wx.getUserInfo({
           success: res => {
             console.log('res', res);
-            // 可以将 res 发送给后台解码出 unionId
-            app.globalData.userInfo = res.userInfo;
+            Object.assign(appData.userInfo, res.userInfo);
 
             // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
             // 所以此处加入 callback 以防止这种情况
@@ -41,35 +43,28 @@ Component({
         });
         app.userInfoReadyCallback = res => {
           this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+            userInfo: appData.userInfo,
+            hasAvatar: true
           });
-        }
+        };
       } else {
         // 在没有 open-type=getUserInfo 版本的兼容处理
         wx.getUserInfo({
           success: res => {
             console.log(res);
-            app.globalData.userInfo = res.userInfo;
+            Object.assign(appData.userInfo, res.userInfo);
             this.setData({
-              userInfo: res.userInfo,
-              hasUserInfo: true
+              userInfo: appData.userInfo,
+              hasAvatar: true
             });
           }
         });
       }
 
-      if (this.data.userInfo.username && this.data.userInfo.phone_number && this.data.userInfo.address && this.data.userInfo.address_detail) {
-        hasContactInfo = true;
-      }
-
-      app.globalData.hasIssueForMine = !this.data.hasUserInfo || !hasContactInfo;
-
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
         this.getTabBar().setData({
-          selected: 2,
-          'list[2].dot': app.globalData.hasIssueForMine
+          selected: 2
         });
       }
     }
@@ -87,38 +82,38 @@ Component({
     modifyProfile() {
       wx.navigateTo({
         url: 'profile/index',
-      })
+      });
     },
     getUserInfo() {
-      if (app.globalData.userInfo) {
-        this.setData({
-          userInfo: app.globalData.userInfo,
-          hasUserInfo: true
-        });
-      } else if (this.data.canIUse) {
-        // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-        wx.getUserInfo({
-          success: res => {
-            // 可以将 res 发送给后台解码出 unionId
-            app.globalData.userInfo = res.userInfo;
+      wx.getUserInfo({
+        success: res => {
+          // 可以将 res 发送给后台解码出 unionId
+          upsertProfile(appData.openid, res.userInfo)
+          .then(console.log)
+          .catch(console.log);
+          Object.assign(appData.userInfo, res.userInfo);
 
-            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-            // 所以此处加入 callback 以防止这种情况
-            if (app.userInfoReadyCallback) {
-              app.userInfoReadyCallback(res);
-            }
-          },
-          fail: () => {
-            $wuxToast().show({
-              type: 'forbidden',
-              duration: 1500,
-              color: '#fff',
-              text: '授权失败',
-              success: () => console.log('授权失败')
-            });
+          // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+          // 所以此处加入 callback 以防止这种情况
+          if (app.userInfoReadyCallback) {
+            app.userInfoReadyCallback(res);
           }
+        },
+        fail: () => {
+          wx.showToast({
+            title: '授权失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      });
+
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: appData.userInfo,
+          hasAvatar: true
         });
-      }
+      };
     }
   }
 });

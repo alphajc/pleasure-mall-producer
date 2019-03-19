@@ -2,8 +2,7 @@
   "component": true,
   "navigationBarTitleText": "我的货架",
   "usingComponents": {
-    "van-card": "/plugins/vant/card/index",
-    "wux-prompt": "/plugins/wux/prompt/index",
-    "van-button": "/plugins/vant/button/index"
+    "pm-card": "/plugins/card/index",
+    "pm-prompt": "/plugins/prompt/index"
   }
 }

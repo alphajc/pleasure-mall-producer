@@ -1,58 +1,36 @@
 <!--miniprogram/pages/my/profile/profile.wxml-->
-<wux-toast id="wux-toast" />
-
 <form bindsubmit="formSubmit" class="page__bd page__bd_spacing">
-  <van-cell-group>
-    <van-field
-      name="username"
-      value="{{ userInfo.username }}"
-      required
-      clearable
-      size="large"
-      label="联系人"
-      placeholder="该如何称呼您？"
-    />
+  <view class="cu-form-group margin-top text-right">
+    <view class="title">联系人</view>
+    <input placeholder="该如何称呼您？" value="{{userInfo.username}}" class="radius" name="username"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">手机号码</view>
+    <input placeholder="请输入您的手机号码" class="radius" name="phone_number" value="{{userInfo.phone_number}}"></input>
+    <view class="cu-capsule radius">
+      <view class="cu-tag bg-green ">
+        +86
+      </view>
+      <view class="cu-tag line-green">
+        中国大陆
+      </view>
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">所在地</view>
+    <picker mode="region" bindchange="regionChange" value="{{userInfo.address}}" custom-item="{{customItem}}">
+      <view class="picker">
+        {{userInfo.address[0]}}，{{userInfo.address[1]}}，{{userInfo.address[2]}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group top " wx:hide="{{modalName==null}}">
+    <view class="title">详细地址</view>
+    <textarea placeholder="请输入尽可能精准的地址" maxlength="-1" disabled="{{modalName!=null}}" name="address_detail" value="{{userInfo.address_detail}}" placeholder-class="placeholder"></textarea>
+  </view>
 
-    <van-field
-      name="phone_number"
-      value="{{ userInfo.phone_number }}"
-      label="联系方式"
-      placeholder="填入您的手机号码"
-      size="large"
-      required
-      clearable
-    />
-
-    <van-cell
-      required
-      title="所在地区"
-      value="{{ userInfo.address }}"
-      size="large"
-      is-link
-      bindtap="onAddressTap"
-    />
-
-    <van-field
-      name="address_detail"
-      value="{{ userInfo.address_detail }}"
-      label="详细地址"
-      required
-      size="large"
-      type="textarea"
-      placeholder="请输入尽可能精准的地址"
-      autosize
-      border="{{ false }}"
-    />
-
-  </van-cell-group>
-
-
-  <view class="btn-area">
-    <button id="submit-button" form-type="submit"> 保存 </button>
+  <view class="padding flex flex-direction">
+    <button form-type="submit" class="cu-btn bg-green lg">保存</button>
   </view>
 
 </form>
-
-<van-popup show="{{ showPopup }}" position="bottom" bind:close="onCloseAddress">
-  <van-area area-list="{{ areaList }}" bind:confirm="confirmAddress" bind:cancel="onCloseAddress" value="{{ userInfo.address_code }}" />
-</van-popup>

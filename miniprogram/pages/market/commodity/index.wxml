@@ -3,11 +3,11 @@
   var getInventoryString = function(inventory) {
     var result = [];
 
-    inventory['level'] && result.push(inventory['level']);
-    inventory['inventory'] && result.push(inventory['inventory'] + "斤");
-    inventory['price'] && result.push(inventory['price'] + "元/斤");
+    inventory["level"] && result.push(inventory["level"]);
+    inventory["inventory"] && result.push(inventory["inventory"] + "斤");
+    inventory["price"] && result.push(inventory["price"] + "元/斤");
 
-    return result.join(',') || '请选择';
+    return result.join(",") || "请选择";
 
   }
 
@@ -24,26 +24,29 @@
 </wxs>
 
 <view class="page__bd">
-  <wux-notice-bar loop>
+  <pm-notice-bar loop>
     请务必确保上架商品真实有效，如有变动请及时更新，我们将竭诚为您服务！
-  </wux-notice-bar>
+  </pm-notice-bar>
   <scroll-view scroll-y style="height:calc(100vh - 86px)">
     <image lazy-load="true" style="width: 824rpx; height: 618rpx" mode="aspectFit" src="{{img}}" />
-    <wux-divider show-text="{{ false }}" />
+    <pm-divider show-text="{{ false }}" />
     <view class="text-lg padding">
       <view class="cu-tag bg-red sm round" wx:for="{{features}}" wx:key>
         {{item}}
       </view>
       <text class="text-black"> 【{{name}}】 {{notes}}</text>
     </view>
-    <wux-divider>
-      <icon type="success" size="8" />
-      <text class="text-black text-xs">坐等领钱 </text>
-      <icon type="success" size="8" />
-      <text class="text-black text-xs">上门装货 </text>
-      <icon type="success" size="8" />
-      <text class="text-black text-xs">互联网+</text>
-    </wux-divider>
+    <pm-divider>
+      <view class="iconfont-roundcheckfill text-xs text-green" style="display: inline-block">
+        <text class="text-black text-xs">坐等领钱 </text>
+      </view>
+      <view class="iconfont-roundcheckfill text-xs text-green" style="display: inline-block">
+        <text class="text-black text-xs">上门装货 </text>
+      </view>
+      <view class="iconfont-roundcheckfill text-xs text-green" style="display: inline-block">
+        <text class="text-black text-xs">互联网+</text>
+      </view>
+    </pm-divider>
     <view class="cu-list menu solid-bottom">
       <view class="cu-item">
         <text class="text-sm text-gray">已选</text>
@@ -57,66 +60,95 @@
       </view>
     </view>
     <view class="cu-bar justify-center bg-white">
-      <view class='action sub-title'>
-        <text class='text-xl text-bold text-green'>上架要求</text>
-        <text class='bg-green' style='width:2rem'></text>
+      <view class="action sub-title">
+        <text class="text-xl text-bold text-green">上架要求</text>
+        <text class="bg-green" style="width:2rem"></text>
         <!-- last-child选择器-->
       </view>
     </view>
-    <view class='padding-sm'>
-      <view class='bg-green padding radius text-center shadow-blur'>
-        <view class="text-lg">请严格按照不同品级的要求进行上架，诚信将是我们考量是否为某个农户服务的唯一条件，我们将在采摘前派专人对产品质量进行确认，感谢您的配合！</view>
+    <view class="padding-sm">
+      <view class="bg-green padding radius text-center shadow-blur">
+        <view class="text-lg">请严格按照不同品级的要求进行上架，诚信将是我们考量是否为某个农户服务的唯一标准，我们将在采摘前派专人对产品质量进行确认，感谢您的配合！</view>
       </view>
     </view>
-    <wux-accordion-group accordion title="以下是各分级所对应的要求" default-current="{{ ['0'] }}">
-      <wux-accordion wx:for="{{qualities}}" wx:key title="{{item.level}}">
-        <view wx:for="{{item.claim}}" wx:for-item="i" wx:for-index="idx" wx:key>
-          <text>{{idx + 1}}. {{i}}</text>
-        </view>
-      </wux-accordion>
-    </wux-accordion-group>
+    <view class="cu-bar bg-white solid-bottom">
+      <view class="action">
+        <text class="iconfont-titles text-green"></text> 以下是各分级所对应的要求
+      </view>
+    </view>
+    <scroll-view scroll-x class="bg-white nav text-center">
+      <view class="cu-item {{index==tabSelected?'text-green cur':''}}" wx:for="{{qualities}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+        {{item.level}}
+      </view>
+    </scroll-view>
+    <view class="padding" wx:for="{{qualities}}" wx:key title="{{item.level}}" wx:if="{{ tabSelected == index}}">
+      <view wx:for="{{item.claim}}" wx:for-item="i" wx:for-index="idx" wx:key>
+        <text>{{idx + 1}}. {{i}}</text>
+      </view>
+    </view>
     <view class="cu-bar justify-center bg-white">
-      <view class='action sub-title'>
-        <text class='text-xl text-bold text-green'>售卖流程</text>
-        <text class='bg-green' style='width:2rem'></text>
+      <view class="action sub-title">
+        <text class="text-xl text-bold text-green">售卖流程</text>
+        <text class="bg-green" style="width:2rem"></text>
         <!-- last-child选择器-->
       </view>
     </view>
-    <wux-steps direction="vertical">
-      <wux-step title="上架" content="各果农将商品上架"></wux-step>
-      <wux-step title="分配订单" content="平台将接到的订单分配给果农"></wux-step>
-      <wux-step title="验货" content="采摘前对产品质量进行确认，通过即进行下一步"></wux-step>
-      <wux-step title="装车" content="验货完成后即进行采摘装车"></wux-step>
-      <wux-step title="完成" status="finish" content="交易完成后领钱收工"></wux-step>
-    </wux-steps>
+    <pm-steps direction="vertical">
+      <pm-step title="上架" content="各果农将商品上架"></pm-step>
+      <pm-step title="分配订单" content="平台将接到的订单分配给果农"></pm-step>
+      <pm-step title="验货" content="采摘前对产品质量进行确认，通过即进行下一步"></pm-step>
+      <pm-step title="装车" content="验货完成后即进行采摘装车"></pm-step>
+      <pm-step title="完成" status="finish" content="交易完成后领钱收工"></pm-step>
+    </pm-steps>
   </scroll-view>
-  <van-goods-action>
-    <van-goods-action-icon icon="chat-o" text="客服" open-type="contact" />
-    <van-goods-action-icon icon="shop-o" text="货架" bind:click="onClickIcon" />
-    <van-goods-action-button text="立即上架" type="primary" bind:click="onClickButton" />
-  </van-goods-action>
+  <view class="cu-bar bg-white tabbar border shop solid-top">
+    <button class="action" open-type="contact">
+      <view class="iconfont-service text-green">
+      </view>
+      客服
+    </button>
+    <button class="action" bindtap="onClickIcon">
+      <view class="iconfont-deliver text-green">
+      </view>
+      货架
+    </button>
+    <view class="bg-green submit" bindtap="onClickButton">立即上架</view>
+  </view>
 </view>
-<van-popup show="{{ showPopup }}" position="bottom" bind:close="onClosePopup">
-  <wux-cell-group>
-  <wux-cell hover-class="none">
-  <wux-input label="总量" defaultValue="{{inventory.inventory}}" bindblur="onInventoryBlur">
-    <view slot="footer" style="margin-left: 5px">斤</view>
-  </wux-input>
-  </wux-cell>
-  <wux-cell hover-class="none">
-  <view class="sub-title">品级</view>
-  <wux-segmented-control default-current="0" values="{{ tools.getLevels(qualities) }}" bind:change="onLevelChange" />
-  </wux-cell>
-  <wux-cell hover-class="none">
-  <wux-input label="单价" defaultValue="{{ inventory.price }}" bindblur="onPriceBlur" >
-    <view slot="footer" style="margin-left: 5px" >元/斤</view>
-  </wux-input>
-  </wux-cell>
-  <wux-cell hover-class="none">
-  <wux-input label="起售量" defaultValue="{{inventory.mini_sales}}" bindblur="onMiniSalesBlur">
-    <view slot="footer" style="margin-left: 5px">斤</view>
-  </wux-input>
-  </wux-cell>
-  </wux-cell-group>
-  <van-button type="primary" size="large" bindtap="submit">上架</van-button>
-</van-popup>
+
+<view class="cu-modal bottom-modal {{showPopup?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog text-right" catchtap>
+    <view class="cu-form-group">
+      <view class='title'>总量</view>
+      <input placeholder="请输入您预估的总量" class='radius' name='input' value="{{inventory.inventory}}" bindblur="onInventoryBlur"></input>
+      <view class="text-right">
+        <text>斤</text>
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>品级</view>
+      <radio-group class="radio-group" bindchange="onLevelChange">
+        <label class="radio" wx:for="{{tools.getLevels(qualities)}}" wx:key>
+          <radio value="{{item}}" /> {{item}}
+        </label>
+      </radio-group>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>单价</view>
+      <input placeholder="请输入你预想中的单价" class='radius' name='input' value="{{inventory.price}}" bindblur="onPriceBlur"></input>
+      <view class="text-right">
+        <text>元/斤</text>
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>起售量</view>
+      <input placeholder="至少得这么多您才会卖" class='radius' name='input' value="{{inventory.mini_sales}}" bindblur="onMiniSalesBlur"></input>
+      <view class="text-right">
+        <text>斤</text>
+      </view>
+    </view>
+    <view class="flex flex-direction">
+      <button class="cu-btn bg-green margin-tb-sm lg " style="border-radius: 0 " bindtap="submit">上架</button>
+    </view>
+  </view>
+</view>

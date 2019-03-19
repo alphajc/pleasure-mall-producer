@@ -1,30 +1,63 @@
 <!--miniprogram/pages/my/index.wxml-->
-<wux-toast id="wux-toast" />
 <view class="page">
-  <view class="userinfo">
-    <wux-button block outline type="balanced" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 
-    <wux-badge dot="{{ true }}">
-     获取头像昵称 
-    </wux-badge>
-    </wux-button>
+  <view class="userinfo margin-top">
+    <button class="cu-btn round lines-green shadow" wx:if="{{!hasAvatar && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+      获取头像昵称
+      <view class="cu-tag badge"></view>
+    </button>
     <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" lazy-load="true" mode="cover"></image>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" lazy-load="true" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
   <view class="page__bd">
 
-    <wux-cell-group title="个人资料">
-      <wux-cell title="联系人" extra="{{userInfo.username || '请补充相关资料'}}"></wux-cell>
-      <wux-cell title="联系电话" extra="{{userInfo.phone_number || '请补充相关资料'}}"></wux-cell>
-      <wux-cell title="联系地址" label="{{userInfo.address_detail || ''}}" extra="{{userInfo.address || '请补充相关资料'}}"></wux-cell>
-    </wux-cell-group>
-
-    <wux-button id="commit-button" block type="balanced" bindtap="modifyProfile">
-      <wux-badge dot="{{ !userInfo.username || !userInfo.phone_number || !userInfo.address || !userInfo.address_detail }}">
-      修改个人资料
-      </wux-badge>
-    </wux-button>
-    
+    <view class="cu-bar bg-white solid-bottom margin-top">
+      <view class='action'>
+        <text class='iconfont-profile text-orange '></text> 个人资料
+      </view>
+      <view class='action'>
+        <button class='cu-btn bg-green shadow' bindtap="modifyProfile">
+          设置
+          <view wx:if="{{ !userInfo.username || !userInfo.phone_number || !userInfo.address.length || !userInfo.address_detail }}" class="cu-tag badge"></view>
+        </button>
+      </view>
+    </view>
+    <view class="cu-list menu">
+      <view class='cu-item'>
+        <view class='content'>
+          <text class='iconfont-people text-green'></text>
+          <text class='text-gray'> 联系人</text>
+        </view>
+        <view class='action'>
+          <text class='text-grey text-sm'>{{userInfo.username || '请补充相关资料'}}</text>
+        </view>
+      </view>
+      <view class='cu-item'>
+        <view class='content'>
+          <text class='iconfont-phone text-green'></text>
+          <text class='text-gray'> 联系电话</text>
+        </view>
+        <view class='action'>
+          <text class='text-grey text-sm'>{{userInfo.phone_number || '请补充相关资料'}}</text>
+        </view>
+      </view>
+      <view class='cu-item'>
+        <view class='content padding-tb-sm'>
+          <text class='iconfont-home text-green'></text>
+          <text class='text-gray'> 联系地址</text>
+          <view class='text-gray text-sm'>
+            <text class='icon-infofill'></text>{{userInfo.address_detail || ''}}</view>
+        </view>
+        <view class='action'>
+          <text class='text-grey text-sm'>{{tools.joinAddress(userInfo.address) || '请补充相关资料'}}</text>
+        </view>
+      </view>
+    </view>
   </view>
 </view>
+<wxs module="tools">
+module.exports.joinAddress = function(address) {
+  return address.join('');
+}
+</wxs>

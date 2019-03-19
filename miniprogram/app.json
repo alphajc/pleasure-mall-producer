@@ -1,4 +1,5 @@
 {
+  "debug": true,
   "pages": [
     "pages/market/index",
     "pages/my/index",
@@ -6,7 +7,8 @@
     "pages/my/profile/index",
     "pages/shelf/index",
     "pages/market/commodity/index",
-    "pages/market/result/index"
+    "pages/market/result/index",
+    "custom-tab-bar/index"
   ],
   "tabBar": {
     "custom": true,
@@ -16,13 +18,22 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/market/index"
+        "pagePath": "pages/market/index",
+        "text": "市场",
+        "iconPath": "/assets/tabbar/market.png",
+        "selectedIconPath": "/assets/tabbar/market-selected.png"
       },
       {
-        "pagePath": "pages/shelf/index"
+        "pagePath": "pages/shelf/index",
+        "text": "货架",
+        "iconPath": "/assets/tabbar/deliver.png",
+        "selectedIconPath": "/assets/tabbar/deliver-selected.png"
       },
       {
-        "pagePath": "pages/my/index"
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "/assets/tabbar/my.png",
+        "selectedIconPath": "/assets/tabbar/my-selected.png"
       }
     ]
   },

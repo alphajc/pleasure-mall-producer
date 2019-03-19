@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "pm-animation-group": "../animation-group/index"
+    }
+}

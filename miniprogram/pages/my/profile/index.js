@@ -1,10 +1,10 @@
 // miniprogram/pages/my/profile/profile.js
-import area from './area';
 import {
-  $wuxToast
-} from '../../../plugins/wux/index'
+  upsertProfile
+} from '../utils/persist'
 
 const app = getApp();
+const appData = app.globalData;
 
 Page({
 
@@ -12,28 +12,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showPopup: false,
-    areaList: area
+    userInfo: {
+      address: ["四川省", "眉山市", "东坡区"]
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    if (app.globalData.userInfo) {
+    const userInfo = appData.userInfo;
+    if (Object.keys(userInfo).length !== 0) {
       this.setData({
-        'userInfo.username': app.globalData.userInfo.username || '',
-        'userInfo.phone_number': app.globalData.userInfo.phone_number || '',
-        'userInfo.address': app.globalData.userInfo.address || '',
-        'userInfo.address_code': app.globalData.userInfo.address_code || '511402', // 设置默认地址为四川省眉山市东坡区
-        'userInfo.address_detail': app.globalData.userInfo.address_detail || ''
+        'userInfo.username': userInfo.username || '',
+        'userInfo.phone_number': userInfo.phone_number || '',
+        'userInfo.address': userInfo.address || ["四川省", "眉山市", "东坡区"],
+        'userInfo.address_detail': userInfo.address_detail || ''
       });
     }
   },
@@ -79,91 +80,33 @@ Page({
   onShareAppMessage: function() {
 
   },
-  onCloseAddress() {
+  regionChange(e) {
+    console.log(e);
     this.setData({
-      showPopup: false
-    });
-  },
-  onAddressTap() {
-    this.setData({
-      showPopup: true
-    });
-  },
-  confirmAddress(e) {
-    this.setData({
-      'userInfo.address_code': e.detail.values[2].code,
-      'userInfo.address': e.detail.values.map(value => value.name).join(''),
-      showPopup: false
+      address: e.detail.value
     });
   },
   formSubmit(e) {
-    let userCol = app.db.producers;
-    let userDoc = app.db.producers.doc(app.globalData.openid);
-
     // 手动将数据反向绑定
     Object.assign(this.data.userInfo, e.detail.value);
 
-    Object.assign(app.globalData.userInfo, this.data.userInfo);
-
     // 写入数据库
-    userDoc.get()
-      .then(res => {
-        userDoc.update({
-            // data 传入需要局部更新的数据
-            data: {
-              ...this.data.userInfo
-            }
-          })
-          .then(res => {
-            $wuxToast().show({
-              type: 'success',
-              duration: 1500,
-              color: '#fff',
-              text: '保存成功',
-              success: console.log
-            });
-          })
-          .catch(e => {
-            console.log(this.data.userInfo);
-            console.error(e);
-            $wuxToast().error({
-              duration: 1500,
-              color: '#fff',
-              text: '保存失败'
-            });
-          })
+    upsertProfile(appData.openid, this.data.userInfo).then(res => {
+        Object.assign(appData.userInfo, this.data.userInfo);
+        wx.showToast({
+          title: '保存成功',
+          icon: 'success',
+          duration: 2000
+        });
       })
       .catch(e => {
-        app.db.producers.add({
-            // data 字段表示需新增的 JSON 数据
-            data: {
-              _id: app.globalData.openid,
-              register_time: new Date(),
-              ...app.globalData.userInfo
-            }
-          })
-          .then(res => {
-            $wuxToast().show({
-              type: 'success',
-              duration: 1500,
-              color: '#fff',
-              text: '保存成功',
-              success: console.log
-            });
-          })
-          .catch(e => {
-            console.error(e);
-            $wuxToast().error({
-              duration: 1500,
-              color: '#fff',
-              text: '保存失败'
-            });
-          });
+        console.log(this.data.userInfo);
+        console.error(e);
+        wx.showToast({
+          title: '保存失败',
+          icon: 'none',
+          duration: 2000
+        });
       });
-
-    // 返回
-    // wx.navigateBack({
-    //   delta: 1
-    // });
   }
 })

@@ -12,7 +12,7 @@ const getClassesRefresh = (callback) => {
       data: data,
       success: callback || console.log
     });
-  }).catch(console.error);
+  }).catch(console.log);
 }
 
 const getClasses = (callback) => {
@@ -36,7 +36,7 @@ const getGoodsRefresh = (callback) => {
     try {
       wx.setStorageSync('goods', data)
     } catch (e) {
-      console.error(e);
+      console.log(e);
     }
     let goods = {},
       imgs = {};
@@ -57,9 +57,9 @@ const getGoodsRefresh = (callback) => {
           success: callback || console.log
         });
       },
-      fail: console.error
+      fail: console.log
     });
-  }).catch(console.error);
+  }).catch(console.log);
 }
 
 const getGoods = (callback) => {
@@ -71,29 +71,29 @@ const getGoods = (callback) => {
   });
 }
 
-const getInventoriesRefresh = (callback) => {
-  wx.cloud.callFunction({
-    name: 'getDocs',
-    data: {
-      clt: 'inventories',
-      felter: {}
-    }
-  }).then(res => {
-    const data = res.result.data;
-    wx.setStorage({
-      key: 'inventories',
-      data: data,
-      success: callback || console.log
+// Promise
+const getInventoriesRefresh = (db) => {
+  return new Promise((resolve, reject) => {
+    db.collection("inventories").get().then(res => {
+      wx.setStorage({
+        key: 'inventories',
+        data: res.data,
+        success: resolve,
+        fail: reject
+      });
     });
-  }).catch(console.error);
+  });
 }
 
-const getInventories = (callback) => {
-  wx.getStorageInfo({
-    success(res) {
-      if (res.keys.indexOf('inventories') !== -1) callback();
-      else getInventoriesRefresh(callback);
-    }
+// Promise
+const getInventories = (db) => {
+  return new Promise((resolve, reject) => {
+    wx.getStorageInfo({
+      success(res) {
+        if (res.keys.indexOf('inventories') !== -1) resolve();
+        else getInventoriesRefresh(db).then(resolve).catch(reject);
+      }
+    });
   });
 }
 

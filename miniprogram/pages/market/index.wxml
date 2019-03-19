@@ -35,3 +35,7 @@
     </view>
   </scroll-view>
 </view>
+<view class='load-progress {{loading?"show":"hide"}}' style="top:{{CustomBar}}px;">
+  <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+  <view class='load-progress-spinner text-green'></view>
+</view>

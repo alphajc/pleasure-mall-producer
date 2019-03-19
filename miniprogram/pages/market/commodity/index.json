@@ -1,20 +1,9 @@
 {
   "navigationBarTitleText": "商品详情",
   "usingComponents": {
-    "wux-divider": "/plugins/wux/divider/index",
-    "wux-notice-bar": "/plugins/wux/notice-bar/index",
-    "wux-accordion-group": "/plugins/wux/accordion-group/index",
-    "wux-accordion": "/plugins/wux/accordion/index",
-    "wux-steps": "/plugins/wux/steps/index",
-    "wux-step": "/plugins/wux/step/index",
-    "wux-segmented-control": "/plugins/wux/segmented-control/index",
-    "wux-cell-group": "/plugins/wux/cell-group/index",
-    "wux-cell": "/plugins/wux/cell/index",
-    "wux-input": "/plugins/wux/input/index",
-    "van-popup": "/plugins/vant/popup/index",
-    "van-goods-action": "/plugins/vant/goods-action/index",
-    "van-goods-action-icon": "/plugins/vant/goods-action-icon/index",
-    "van-goods-action-button": "/plugins/vant/goods-action-button/index",
-    "van-button": "/plugins/vant/button/index"
+    "pm-divider": "/plugins/divider/index",
+    "pm-notice-bar": "/plugins/notice-bar/index",
+    "pm-steps": "/plugins/steps/index",
+    "pm-step": "/plugins/step/index"
   }
 }

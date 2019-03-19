@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "提交结果",
   "usingComponents": {
-    "wux-result": "/plugins/wux/result/index"
+    "pm-result": "/plugins/result/index"
   }
 }

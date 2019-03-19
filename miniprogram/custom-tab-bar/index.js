@@ -1,43 +1,35 @@
 const app = getApp();
 
 Component({
+  options: {
+    addGlobalClass: true,
+  },
   data: {
     selected: 0,
-    color: "#7A7E83",
-    selectedColor: "#3cc51f",
     list: [{
-        pagePath: "/pages/market/index",
-        icon: "home-o",
-        text: "市场",
-        dot: app.globalData.hasIssueForMarket || false
-      }, {
-        pagePath: "/pages/shelf/index",
-        icon: "shop-o",
-        text: "货架",
-        dot: app.globalData.hasIssueForShelf || false
-      },
-      {
-        pagePath: "/pages/my/index",
-        icon: "manager-o",
-        text: "我的",
-        dot: app.globalData.hasIssueForMine || false
-      }
-    ]
+      pagePath: "/pages/market/index",
+      text: "市场",
+      iconPath: "/assets/tabbar/market.png",
+      selectedIconPath: "/assets/tabbar/market-selected.png"
+    }, {
+      pagePath: "/pages/shelf/index",
+      text: "货架",
+      iconPath: "/assets/tabbar/deliver.png",
+      selectedIconPath: "/assets/tabbar/deliver-selected.png"
+    },
+    {
+      pagePath: "/pages/my/index",
+      text: "我的",
+      iconPath: "/assets/tabbar/my.png",
+      selectedIconPath: "/assets/tabbar/my-selected.png"
+    }]
   },
   lifetimes: {
     created() {
-      // console.log('tabbar created');
     },
     attached() {
-      this.setData({
-        'list[0].dot': app.globalData.hasIssueForMarket || false,
-        'list[1].dot': app.globalData.hasIssueForShelf || false,
-        'list[2].dot': app.globalData.hasIssueForMine || false,
-      });
-      // console.log('tabbar attached');
     },
     detached() {
-      // console.log('tabbar detached');
     }
   },
   methods: {
@@ -46,12 +38,6 @@ Component({
       const url = data.path;
       wx.switchTab({
         url
-      });
-      this.setData({
-        selected: data.index,
-        'list[0].dot': app.globalData.hasIssueForMarket || false,
-        'list[1].dot': app.globalData.hasIssueForShelf || false,
-        'list[2].dot': app.globalData.hasIssueForMine || false,
       });
     }
   }

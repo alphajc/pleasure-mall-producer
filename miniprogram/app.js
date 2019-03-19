@@ -15,20 +15,19 @@ App({
       // 连接腾讯云
       wx.cloud.init({
         traceUser: true,
+        env: {
+          database: "test-39237a",
+          storage: "test-39237a",
+          functions: "test-39237a"
+        }
       });
-      const db = wx.cloud.database({
-        env: "test-39237a"
-      });
-
-      this.db.producers = db.collection("producers");
-      this.db.inventories = db.collection("inventories");
-      this.db.goods = db.collection("goods");
-      this.db.classes = db.collection("classes");
+      this.db = wx.cloud.database();
 
       // 登录
       wx.login({
         success: res => {
           // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          getInventoriesRefresh(this.db);
           if (!this.globalData.openid) {
             wx.cloud.callFunction({
               name: 'login',
@@ -36,7 +35,7 @@ App({
               success: res => {
                 this.globalData.unionid = res.result.unionid;
                 this.globalData.openid = res.result.openid;
-                db.collection("producers")
+                this.db.collection("producers")
                   .doc(res.result.openid)
                   .get()
                   .then(res => this.globalData.userInfo = Object.assign(this.globalData.userInfo, res.data))
@@ -86,7 +85,6 @@ App({
       
       getClassesRefresh();
       getGoodsRefresh();
-      getInventoriesRefresh();
     }
   },
   globalData: {
@@ -94,6 +92,5 @@ App({
     hasIssueForMine: false,
     hasIssueForShelf: false,
     hasIssueForMarket: false
-  },
-  db: {}
+  }
 });

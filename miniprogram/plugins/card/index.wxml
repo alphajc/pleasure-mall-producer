@@ -1,0 +1,44 @@
+<wxs src="../wxs/utils.wxs" module="utils" />
+
+<view class="custom-class pm-card">
+  <view class="{{ utils.bem('card__header', { center: centered }) }}">
+    <view class="pm-card__thumb" bind:tap="onClickThumb">
+      <image
+        wx:if="{{ thumb }}"
+        src="{{ thumb }}"
+        mode="{{ thumbMode }}"
+        lazy-load="{{ lazyLoad }}"
+        class="pm-card__img thumb-class"
+      />
+      <slot name="thumb" />
+      <pm-tag
+        wx:if="{{ tag }}"
+        mark
+        type="danger"
+        custom-class="pm-card__tag"
+      >
+        {{ tag }}
+      </pm-tag>
+    </view>
+
+    <view class="pm-card__content">
+      <view wx:if="{{ title }}" class="pm-card__title title-class">{{ title }}</view>
+      <slot wx:else name="title" />
+
+      <view wx:if="{{ desc }}" class="pm-card__desc desc-class">{{ desc }}</view>
+      <slot wx:else name="desc" />
+
+      <slot name="tags" />
+
+      <view class="pm-card__bottom">
+        <view wx:if="{{ price || price === 0 }}" class="pm-card__price price-class">{{ currency }} {{ price }}</view>
+        <view wx:if="{{ originPrice || originPrice === 0 }}" class="pm-card__origin-price origin-price-class">{{ currency }} {{ originPrice }}</view>
+        <view wx:if="{{ num }}" class="pm-card__num num-class">x {{ num }}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="pm-card__footer">
+    <slot name="footer" />
+  </view>
+</view>

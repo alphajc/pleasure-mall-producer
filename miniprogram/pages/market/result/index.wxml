@@ -1,5 +1,5 @@
 <!--miniprogram/pages/market/result/index.wxml-->
-<wux-result
+<pm-result
     title="{{result}}"
     label="{{label}}"
     icon = "{{icon}}"

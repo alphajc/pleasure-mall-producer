@@ -1,4 +1,6 @@
 // miniprogram/pages/market/commodity/index.js
+import { getInventoriesRefresh } from '../../../utils/db-cache'
+
 const app = getApp();
 
 Page({
@@ -8,9 +10,8 @@ Page({
    */
   data: {
     showPopup: false,
-    inventory: {
-      level: 'A'
-    }
+    inventory: {},
+    tabSelected: 0
   },
 
   /**
@@ -28,10 +29,10 @@ Page({
           features: res.data.features,
           notes: res.data.notes,
           qualities: res.data.qualities,
-          address: app.globalData.userInfo.address + app.globalData.userInfo.address_detail
+          address: app.globalData.userInfo.address.join('') + app.globalData.userInfo.address_detail
         });
         self.data.inventory.gid = res.data._id;
-        self.data.inventory.origin = app.globalData.userInfo.address;
+        self.data.inventory.origin = app.globalData.userInfo.address.join('');
         wx.removeStorage({
           key: options.id,
           success: console.log
@@ -102,7 +103,7 @@ Page({
     //   }
     // });
   },
-  onClosePopup() {
+  hideModal() {
     this.setData({
       showPopup: false
     });
@@ -130,12 +131,12 @@ Page({
   },
   onLevelChange(e) {
     this.setData({
-      'inventory.level': e.detail.values[e.detail.key]
+      'inventory.level': e.detail.value
     });
   },
   submit() {
     const self = this;
-    const ivtc = app.db.inventories;
+    const ivtc = app.db.collection("inventories");
     // 默认用openid，所以此处不加入过滤条件
     ivtc.where({
         gid: self.data.inventory.gid,
@@ -144,26 +145,31 @@ Page({
       .get({
         success(res) {
           console.log('submit get success:', res);
-          if (res.data.length === 0) {
+          const inventories = res.data.filter(item => item.dropped !== true);
+          if (inventories.length === 0) {
             ivtc.add({
                 data: {
                   ...self.data.inventory,
                   commit_time: new Date()
                 }
               })
-              .then(res => {
-                try {
-                  wx.setStorageSync('result', {
-                    result: '成功',
-                    label: '您的' + self.data.inventory.level + '级别的' + self.data.name + '已经成功上架'
-                  });
-                  wx.navigateTo({
-                    url: '../result/index'
-                  });
-                } catch (e) {
-                  console.error(e);
-                }
-              });
+              .then(res => 
+                getInventoriesRefresh(app.db)
+                .then(() => 
+                {
+                  try {
+                    wx.setStorageSync('result', {
+                      result: '成功',
+                      label: '您的' + self.data.inventory.level + '级别的' + self.data.name + '已经成功上架'
+                    });
+                    wx.navigateTo({
+                      url: '../result/index'
+                    });
+                  } catch (e) {
+                    console.error(e);
+                  }
+                })
+              );
           } else {
             try {
               wx.setStorageSync('result', {
@@ -184,5 +190,10 @@ Page({
         },
         fail: console.log
       });
+  },
+  tabSelect(e) {
+    this.setData({
+      tabSelected: e.target.dataset.id
+    });
   }
 })

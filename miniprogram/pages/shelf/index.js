@@ -1,8 +1,7 @@
 // pages/shelf/index.js
 import {
-  getInventories,
-  getGoods
-} from '../../utils/db-cache'
+  renderShelf
+} from '../../utils/storage'
 const app = getApp();
 
 Component({
@@ -18,6 +17,8 @@ Component({
    */
   data: {
     inventories: [],
+    loading: true,
+    loadProgress: 0,
     msg: {
       title: '您还没有相关的待售商品',
       text: '可以去看看有哪些可以卖的',
@@ -35,6 +36,41 @@ Component({
       wx.switchTab({
         url: '/pages/market/index'
       });
+    },
+    modify(e) {
+      console.log(e);
+    },
+    delete(e) {
+      const self = this;
+      const ivtc = app.db.collection("inventories");
+      const { id, index } = e.currentTarget.dataset;
+      console.log('id', id);
+      console.log('index', index);
+      wx.showModal({
+        title: '确认',
+        content: '确认要下架该商品吗？',
+        success(res) {
+          if (res.confirm) {
+            ivtc.doc(id).update({
+              data: {
+                dropped: true
+              },
+              success() {
+                self.data.inventories[index].dropped = true;
+                console.log('self.data.inventories', self.data.inventories);
+                self.setData({
+                  inventories: self.data.inventories
+                });
+                wx.showToast({
+                  title: '下架成功',
+                });
+              }
+            });
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      });
     }
   },
 
@@ -44,52 +80,16 @@ Component({
         this.getTabBar()) {
         this.getTabBar().setData({
           selected: 1
-        })
+        });
       }
+      
+      renderShelf(this);
     }
   },
 
   lifetimes: {
     attached() {
-      const self = this;
-
-      getInventories(() => {
-        wx.getStorage({
-          key: 'inventories',
-          success(res) {
-            const inventories = res.data.filter(ivt => ivt.dropped !== true); // 过滤掉标记为删除的数据
-            getGoods(() => {
-              wx.getStorage({
-                key: 'goods',
-                success(res) {
-                  const goods = res.data;
-                  wx.getStorage({
-                    key: 'goodsImgs',
-                    success(res) {
-                      const imgs = res.data;
-
-                      self.setData({
-                        inventories: inventories.map(ivt => {
-                          const found = goods.find(item => item._id === ivt.gid);
-
-                          return {
-                            inventory: ivt.inventory,
-                            price: ivt.price,
-                            level: ivt.level,
-                            id: ivt._id,
-                            name: found.name,
-                            img: imgs[found.pic]
-                          };
-                        })
-                      });
-                    }
-                  });
-                },
-              })
-            });
-          }
-        });
-      });
+      renderShelf(this);
     }
   }
 })

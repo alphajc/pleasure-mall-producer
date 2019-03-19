@@ -1,13 +1,4 @@
 {
   "navigationBarTitleText": "个人信息",
-  "usingComponents": {
-    "van-popup": "/plugins/vant/popup/index",
-    "van-area": "/plugins/vant/area/index",
-    "van-field": "/plugins/vant/field/index",
-    "van-cell": "/plugins/vant/cell/index",
-    "van-cell-group": "/plugins/vant/cell-group/index",
-    "wux-button": "/plugins/wux/button/index",
-    "wux-icon": "/plugins/wux/icon/index",
-    "wux-toast": "/plugins/wux/toast/index"
-  }
+  "usingComponents": {}
 }

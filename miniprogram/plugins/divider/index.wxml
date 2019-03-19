@@ -1,0 +1,6 @@
+<view class="pm-class {{ classes.wrap }}">
+	<view class="{{ classes.text }}" wx:if="{{ showText }}">
+		{{ text }}
+		<slot></slot>
+	</view>
+</view>

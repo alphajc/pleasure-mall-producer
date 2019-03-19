@@ -1,12 +1,21 @@
 <!--pages/shelf/index.wxml-->
 <view class="page__bd">
-  <wux-prompt visible="{{inventories.length === 0}}" title="{{ msg.title }}" text="{{ msg.text }}" buttons="{{ msg.buttons }}" bind:click="buttonClicked" />
+  <pm-prompt visible="{{inventories.length === 0 && !loading }}" title="{{ msg.title }}" text="{{ msg.text }}" buttons="{{ msg.buttons }}" bind:click="buttonClicked" />
   <scroll-view style="height:calc(100vh - 50px)" scroll-y scroll-with-animation>
-  <van-card class="solid margin" tag="{{item.level}}" num="{{item.inventory}}" price="{{item.price}}" title="{{item.name}}" thumb="{{item.img}}" wx:for="{{inventories}}" wx:key>
+  <pm-card wx:if="{{!item.dropped}}" class="solid margin" tag="{{item.level}}" num="{{item.inventory}}" price="{{item.price}}" title="{{item.name}}" thumb="{{item.img}}" wx:for="{{inventories}}" wx:key>
     <view slot="footer">
-      <van-button data-id="{{item.id}}" size="mini">修改</van-button>
-      <van-button data-id="{{item.id}}" size="mini">删除</van-button>
+      <button class="cu-btn" style="background: rgba(0, 0, 0, 0);" bindtap="modify" data-index="{{index}}" data-id="{{item.id}}">
+        <view class="iconfont-edit">
+        </view>
+      </button>
+      <button class="cu-btn" style="background: rgba(0, 0, 0, 0);" bindtap="delete" data-index="{{index}}" data-id="{{item.id}}">
+        <view class="iconfont-delete"></view>
+      </button>
     </view>
-  </van-card>
+  </pm-card>
   </scroll-view>
+</view>
+<view class='load-progress {{loading?"show":"hide"}}' style="top:{{CustomBar}}px;">
+  <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+  <view class='load-progress-spinner text-green'></view>
 </view>

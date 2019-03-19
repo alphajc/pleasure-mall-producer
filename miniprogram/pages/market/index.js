@@ -1,9 +1,15 @@
 // miniprogram/pages/market/index.js
-import { getClasses, getGoods } from '../../utils/db-cache'
+import {
+  getClasses,
+  getGoods
+} from '../../utils/db-cache'
 const app = getApp();
+const appData = app.globalData;
 
 Component({
   data: {
+    loading: true,
+    loadProgress: 0,
     classes: [],
     TabCur: 0,
     VerticalNavTop: 0
@@ -16,14 +22,36 @@ Component({
       })
     },
     selectGoods(e) {
-      try {
-        wx.setStorageSync(e.currentTarget.dataset.commodity._id, e.currentTarget.dataset.commodity);
-      } catch (e) {
-        console.error(e);
+      console.log(appData.userInfo);
+      if (appData.userInfo.address &&
+        appData.userInfo.address.length > 0 &&
+        appData.userInfo.address_detail) {
+        wx.setStorage({
+          key: e.currentTarget.dataset.commodity._id,
+          data: e.currentTarget.dataset.commodity,
+          success: res => {
+            wx.navigateTo({
+              url: 'commodity/index?id=' + e.currentTarget.dataset.commodity._id,
+            });
+          },
+          fail: console.log
+        });
+      } else {
+        wx.showModal({
+          title: '个人信息缺失',
+          content: '缺少个人信息，无法上架商品，需要前往添加吗？',
+          success(res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../my/profile/index',
+              });
+            } else if (res.cancel) {
+              console.log('用户点击取消');
+            }
+          }
+        });
       }
-      wx.navigateTo({
-        url: 'commodity/index?id=' + e.currentTarget.dataset.commodity._id,
-      })
+
     }
   },
   pageLifetimes: {
@@ -45,19 +73,26 @@ Component({
           success(res) {
             const classes = res.data;
             self.setData({
-              classes
+              classes,
+              loadProgress: 10
             });
             getGoods(() => {
               wx.getStorage({
                 key: 'goods',
                 success(res) {
                   const goods = res.data;
+                  self.setData({
+                    loadProgress: 40
+                  });
                   wx.getStorage({
                     key: 'goodsImgs',
                     success(res) {
                       const imgs = res.data;
                       const goodsByClass = {};
                       goods.forEach(g => {
+                        self.setData({
+                          loadProgress: self.data.loadProgress + (40 / goods.length)
+                        });
                         if (!goodsByClass[g['class']]) {
                           goodsByClass[g['class']] = [];
                         }
@@ -67,7 +102,9 @@ Component({
                         });
                       });
                       self.setData({
-                        goods: goodsByClass
+                        goods: goodsByClass,
+                        loadProgress: 100,
+                        loading: false
                       });
                     },
                   })
@@ -78,55 +115,6 @@ Component({
           fail: console.error
         });
       });
-      // app.db.classes.get()
-      //   .then(res => {
-      //     let classes = res.data.map(c => c.name);
-      //     this.setData({
-      //       classes
-      //     });
-
-      //     wx.cloud.callFunction({
-      //       name: 'getDocs',
-      //       data: {
-      //         clt: 'goods',
-      //         felter: {}
-      //       }
-      //     }).then(res => {
-      //       const data = res.result.data;
-      //       let goods = {}, imgs = {};
-      //       // console.log('data', data);
-      //       wx.cloud.getTempFileURL({
-      //         fileList: data.map(g => g.pic),
-      //         success: r => {
-      //           // fileList 是一个有如下结构的对象数组
-      //           // [{
-      //           //    fileID: 'cloud://xxx.png', // 文件 ID
-      //           //    tempFileURL: '', // 临时文件网络链接
-      //           //    maxAge: 120 * 60 * 1000, // 有效期
-      //           // }]
-      //           // console.log('fileList:', r.fileList)
-      //           r.fileList.forEach(f => imgs[f.fileID] = f.tempFileURL);
-      //           // console.log('imgs:', imgs);
-      //           data.forEach(g => {
-      //             // console.log('g', g);
-      //             if (!goods[g['class']]) {
-      //               goods[g['class']] = [];
-      //             }
-      //             goods[g['class']].push({
-      //               ...g,
-      //               img: imgs[g.pic]
-      //             });
-      //           });
-      //           // console.log('goods:', goods);
-      //           this.setData({
-      //             goods
-      //           });
-      //         },
-      //         fail: console.error
-      //       });
-      //     });
-      //   });
-      // console.log('market attached.');
     },
     detached() {
       // console.log('market detached.');

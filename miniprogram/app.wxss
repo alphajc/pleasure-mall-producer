@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import "styles/icon.wxss";
 @import "styles/colorui.wxss";
 
 .text-light {
