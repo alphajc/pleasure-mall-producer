@@ -27,7 +27,6 @@ App({
         // env: "test-39237a"
         env: "pleasure-mall-77a17c"
       });
-      console.log(wx.cloud);
       this.db = wx.cloud.database();
 
       // 登录
