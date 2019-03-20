@@ -1,6 +1,6 @@
 <!--pages/shelf/index.wxml-->
 <view class="page__bd">
-  <pm-prompt visible="{{inventories.length === 0 && !loading }}" title="{{ msg.title }}" text="{{ msg.text }}" buttons="{{ msg.buttons }}" bind:click="buttonClicked" />
+  <pm-prompt visible="{{withoutInventories && !loading }}" title="{{ msg.title }}" text="{{ msg.text }}" buttons="{{ msg.buttons }}" bind:click="buttonClicked" />
   <scroll-view style="height:calc(100vh - 50px)" scroll-y scroll-with-animation>
   <pm-card wx:if="{{!item.dropped}}" class="solid margin" tag="{{item.level}}" num="{{item.inventory}}" price="{{item.price}}" title="{{item.name}}" thumb="{{item.img}}" wx:for="{{inventories}}" wx:key>
     <view slot="footer">

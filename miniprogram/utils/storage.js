@@ -56,7 +56,8 @@ const renderShelf = (context) => {
                       };
                     }),
                     loadProgress: 100,
-                    loading: false
+                    loading: false,
+                    withoutInventories: inventories.filter(ivt => ivt.dropped !== true).length === 0
                   });
                 }
               });

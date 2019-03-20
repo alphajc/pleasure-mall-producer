@@ -80,11 +80,14 @@ Component({
               success() {
                 self.data.inventories[index].dropped = true;
                 console.log('self.data.inventories', self.data.inventories);
-                self.setData({
-                  inventories: self.data.inventories
-                });
-                wx.showToast({
-                  title: '下架成功',
+                getInventoriesRefresh(app.db).then(()=>{
+                  wx.showToast({
+                    title: '下架成功',
+                  });
+                  self.setData({
+                    inventories: self.data.inventories,
+                    withoutInventories: self.data.inventories.filter(ivt => ivt.dropped !== true).length === 0
+                  });
                 });
               }
             });
