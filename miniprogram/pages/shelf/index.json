@@ -1,8 +1,6 @@
 {
-  "component": true,
   "navigationBarTitleText": "我的货架",
   "usingComponents": {
-    "pm-card": "/plugins/card/index",
-    "pm-prompt": "/plugins/prompt/index"
+    "pm-card": "/plugins/card/index"
   }
 }

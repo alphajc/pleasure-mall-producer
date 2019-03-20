@@ -7,11 +7,12 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": true
+		"autoAudits": true,
+		"uglifyFileName": true
 	},
 	"appid": "wx48f48b319e168b01",
 	"projectname": "pleasure-mall-producer",
-	"libVersion": "2.6.0",
+	"libVersion": "2.6.2",
 	"compileType": "miniprogram",
 	"condition": {
 		"search": {

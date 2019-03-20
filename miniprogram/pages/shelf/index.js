@@ -130,8 +130,10 @@ Component({
           selected: 1
         });
       }
-      
-      renderShelf(this);
+      if (app.globalData.updatedShelf) {
+        renderShelf(this);
+        app.globalData.updatedShelf = false;
+      }
     }
   },
 
