@@ -83,7 +83,7 @@ Page({
   regionChange(e) {
     console.log(e);
     this.setData({
-      address: e.detail.value
+      'userInfo.address': e.detail.value
     });
   },
   formSubmit(e) {
