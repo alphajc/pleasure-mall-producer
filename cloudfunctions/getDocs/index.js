@@ -3,7 +3,7 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 const db = cloud.database({
-  env: "test-39237a"
+  // env: "test-39237a"
 });
 const MAX_LIMIT = 100
 // 云函数入口函数

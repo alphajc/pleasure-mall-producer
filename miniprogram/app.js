@@ -24,12 +24,10 @@ App({
       // 连接腾讯云
       wx.cloud.init({
         traceUser: true,
-        env: {
-          database: "test-39237a",
-          storage: "test-39237a",
-          functions: "test-39237a"
-        }
+        // env: "test-39237a"
+        env: "pleasure-mall-77a17c"
       });
+      console.log(wx.cloud);
       this.db = wx.cloud.database();
 
       // 登录
