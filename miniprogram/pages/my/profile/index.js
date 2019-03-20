@@ -1,10 +1,40 @@
 // miniprogram/pages/my/profile/profile.js
 import {
   upsertProfile
-} from '../utils/persist'
+} from '../utils/persist';
+
+import Validator from '../../../utils/validate';
 
 const app = getApp();
 const appData = app.globalData;
+
+const rules = {
+  username: {
+    required: true,
+    rangelength: [2, 6]
+  },
+  phone_number: {
+    required: true,
+    tel: true
+  },
+  address_detail: {
+    required: true
+  }
+};
+
+const messages = {
+  username: {
+    required: '请输入您的姓名',
+    rangelength: '您姓名的长度应该在2到6个字符之间',
+  },
+  phone_number: {
+    required: '请输入手机号',
+    tel: '请输入11位的手机号码',
+  },
+  address_detail: {
+    required: '请输入您的详细地址'
+  },
+}
 
 Page({
 
@@ -14,7 +44,8 @@ Page({
   data: {
     userInfo: {
       address: ["四川省", "眉山市", "东坡区"]
-    }
+    },
+    errors: []
   },
 
   /**
@@ -87,6 +118,20 @@ Page({
     });
   },
   formSubmit(e) {
+    console.log(e);
+    const validator = new Validator(rules, messages);
+    if (!validator.checkForm(e.detail.value)) {
+      const errors = validator.errorList;
+      this.setData({
+        errors
+      });
+      return false
+    }
+
+    this.setData({
+      errors: []
+    });
+
     // 手动将数据反向绑定
     Object.assign(this.data.userInfo, e.detail.value);
 

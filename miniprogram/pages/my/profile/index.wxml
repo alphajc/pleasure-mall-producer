@@ -28,7 +28,12 @@
     <view class="title">详细地址</view>
     <textarea placeholder="请输入尽可能精准的地址" maxlength="-1" disabled="{{modalName!=null}}" name="address_detail" value="{{userInfo.address_detail}}" placeholder-class="placeholder"></textarea>
   </view>
-
+  <view wx:if="{{errors.length > 0}}" class='padding-sm'>
+    <view class='bg-red padding radius light'>
+    <view class="text-sm">很遗憾，你遇到了以下错误：</view>
+      <view wx:for="{{errors}}" wx:key class="text-sm">{{index + 1}}. {{item.msg}}</view>
+    </view>
+  </view>
   <view class="padding flex flex-direction">
     <button form-type="submit" class="cu-btn bg-green lg">保存</button>
   </view>
