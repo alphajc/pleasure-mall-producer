@@ -144,7 +144,6 @@ Page({
       })
       .get({
         success(res) {
-          console.log('submit get success:', res);
           const inventories = res.data.filter(item => item.dropped !== true);
           if (inventories.length === 0) {
             ivtc.add({
@@ -162,6 +161,7 @@ Page({
                       result: '成功',
                       label: '您的' + self.data.inventory.level + '级别的' + self.data.name + '已经成功上架'
                     });
+                    app.globalData.updatedShelf = true;
                     wx.navigateTo({
                       url: '../result/index'
                     });

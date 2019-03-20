@@ -6,7 +6,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title">手机号码</view>
-    <input placeholder="请输入您的手机号码" class="radius" name="phone_number" value="{{userInfo.phone_number}}"></input>
+    <input class="radius" name="phone_number" value="{{userInfo.phone_number}}"></input>
     <view class="cu-capsule radius">
       <view class="cu-tag bg-green ">
         +86
