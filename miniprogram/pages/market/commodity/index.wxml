@@ -28,7 +28,7 @@
     请务必确保上架商品真实有效，如有变动请及时更新，我们将竭诚为您服务！
   </pm-notice-bar>
   <scroll-view scroll-y style="height:calc(100vh - 86px)">
-    <image lazy-load="true" style="width: 824rpx; height: 618rpx" mode="aspectFit" src="{{img}}" />
+    <image lazy-load="{{true}}" style="width: 824rpx; height: 618rpx" mode="aspectFit" src="{{img}}" />
     <pm-divider show-text="{{ false }}" />
     <view class="text-lg padding">
       <view class="cu-tag bg-red sm round" wx:for="{{features}}" wx:key>
