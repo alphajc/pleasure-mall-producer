@@ -1,6 +1,6 @@
 {
   "name": "不知火",
-  "pic": "cloud://test-39237a.7465-test-39237a/不知火.jpg",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/不知火.jpg",
   "qualities": [
     {
       "level": "A",
@@ -29,6 +29,958 @@
       ]
     }
   ],
-  "origin": "成都市蒲江县",
+  "features": [
+    "新品",
+    "爆品"
+  ],
+  "notes": "目前接收不同品级的该产品上架",
   "class": "柑橘"
+}
+{
+  "name": "凤梨",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/凤梨.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "菠萝"
+}
+{
+  "name": "小米蕉(皇帝蕉)",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/小米蕉、皇帝蕉.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "香蕉"
+}
+{
+  "name": "尤力克柠檬",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/尤力克柠檬.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "柠檬"
+}
+{
+  "name": "无籽西瓜",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/无籽西瓜.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "西瓜"
+}
+{
+  "name": "毛桃",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/毛桃.png",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "桃"
+}
+{
+  "name": "水蜜桃",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/水蜜桃.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "桃"
+}
+{
+  "name": "沙田柚",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/沙田柚.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "柚子"
+}
+{
+  "name": "沙糖桔",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/沙糖桔.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "柑橘"
+}
+{
+  "name": "油桃",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/油桃.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "桃"
+}
+{
+  "name": "清脆李",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/清脆李.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "李"
+}
+{
+  "name": "皇冠梨",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/皇冠梨.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "梨"
+}
+{
+  "name": "秋月梨",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/秋月梨.jpg",
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "class": "梨"
+}
+{
+  "name": "章姬草莓",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/章姬草莓.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "草莓"
+}
+{
+  "name": "红富士",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/红富士.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "苹果"
+}
+{
+  "name": "红心蜜柚",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/红心蜜柚.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "柚子"
+}
+{
+  "name": "红颜草莓",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/红颜草莓.JPG",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "草莓"
+}
+{
+  "name": "红香蕉",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/红香蕉.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "香蕉"
+}
+{
+  "name": "耙耙柑(春见)",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/耙耙柑.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "200-300g/个",
+        "无农药残留",
+        "无对人体有害物质"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "200-300g/个",
+        "无农药残留",
+        "无对人体有害物质",
+        "糖度：14%以上"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "200-300g/个",
+        "无农药残留",
+        "无对人体有害物质",
+        "糖度：15%以上"
+      ]
+    }
+  ],
+  "features": [
+    "新品",
+    "爆品"
+  ],
+  "notes": "目前接收不同品级的该产品上架",
+  "class": "柑橘"
+}
+{
+  "name": "脆红李",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/脆红李.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "李"
+}
+{
+  "name": "蛇果",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/蛇果.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "苹果"
+}
+{
+  "name": "血橙",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/血橙.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "柑橘"
+}
+{
+  "name": "雪花梨",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/雪花梨.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "梨"
+}
+{
+  "name": "香梨",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/香梨.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "梨"
+}
+{
+  "name": "香水菠萝",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/香水菠萝.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "菠萝"
+}
+{
+  "name": "鸭梨",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/鸭梨.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "梨"
+}
+{
+  "name": "黄桃",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/黄桃.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "桃"
+}
+{
+  "name": "黑美人西瓜",
+  "pic": "cloud://pleasure-mall-77a17c.706c-pleasure-mall-77a17c/展示图/黑美人西瓜.jpg",
+  "qualities": [
+    {
+      "level": "A",
+      "claim": [
+        "条件一",
+        "条件二",
+        "条件三"
+      ]
+    },
+    {
+      "level": "AA",
+      "claim": [
+        "条件四",
+        "条件五"
+      ]
+    },
+    {
+      "level": "AAA",
+      "claim": [
+        "条件六",
+        "条件七",
+        "条件八",
+        "条件九"
+      ]
+    }
+  ],
+  "features": [
+    "新品"
+  ],
+  "notes": "目前试运营，该产品暂不接受上架",
+  "class": "西瓜"
 }
