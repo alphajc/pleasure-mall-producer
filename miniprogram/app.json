@@ -3,7 +3,6 @@
   "pages": [
     "pages/market/index",
     "pages/my/index",
-    "pages/auth/index",
     "pages/my/profile/index",
     "pages/shelf/index",
     "pages/market/commodity/index",
