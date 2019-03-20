@@ -4,7 +4,7 @@
   <scroll-view style="height:calc(100vh - 50px)" scroll-y scroll-with-animation>
   <pm-card wx:if="{{!item.dropped}}" class="solid margin" tag="{{item.level}}" num="{{item.inventory}}" price="{{item.price}}" title="{{item.name}}" thumb="{{item.img}}" wx:for="{{inventories}}" wx:key>
     <view slot="footer">
-      <button class="cu-btn" style="background: rgba(0, 0, 0, 0);" bindtap="modify" data-index="{{index}}" data-id="{{item.id}}">
+      <button class="cu-btn" style="background: rgba(0, 0, 0, 0);" bindtap="edit" data-index="{{index}}" data-inventory="{{item}}">
         <view class="iconfont-edit">
         </view>
       </button>
@@ -18,4 +18,35 @@
 <view class='load-progress {{loading?"show":"hide"}}' style="top:{{CustomBar}}px;">
   <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
   <view class='load-progress-spinner text-green'></view>
+</view>
+
+<view class="cu-modal drawer-modal justify-start {{showPopup?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog text-right" catchtap>
+    <form bindsubmit="submit" data-id="{{inventory.id}}">
+    <view class="cu-form-group">
+      <view class='title'>总量</view>
+      <input placeholder="请输入您预估的总量" class='radius' name='inventory' value="{{inventory.inventory}}" bindblur="onInventoryBlur"></input>
+      <view class="text-right">
+        <text>斤</text>
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>单价</view>
+      <input placeholder="请输入你预想中的单价" class='radius' name='price' value="{{inventory.price}}" bindblur="onPriceBlur"></input>
+      <view class="text-right">
+        <text>元/斤</text>
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class='title'>起售量</view>
+      <input placeholder="至少得这么多您才会卖" class='radius' name='mini_sales' value="{{inventory.mini_sales}}" bindblur="onMiniSalesBlur"></input>
+      <view class="text-right">
+        <text>斤</text>
+      </view>
+    </view>
+    <view class="flex flex-direction">
+      <button class="cu-btn bg-green margin-tb-sm lg " style="border-radius: 0 " form-type="submit">确认修改</button>
+    </view>
+    </form>
+  </view>
 </view>

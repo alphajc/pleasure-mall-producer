@@ -1,7 +1,10 @@
 // pages/shelf/index.js
 import {
   renderShelf
-} from '../../utils/storage'
+} from '../../utils/storage';
+import {
+  getInventoriesRefresh
+} from '../../utils/db-cache';
 const app = getApp();
 
 Component({
@@ -16,6 +19,9 @@ Component({
    * 组件的初始数据
    */
   data: {
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    showPopup: false,
     inventories: [],
     loading: true,
     loadProgress: 0,
@@ -37,8 +43,17 @@ Component({
         url: '/pages/market/index'
       });
     },
-    modify(e) {
-      console.log(e);
+    hideModal() {
+      this.setData({
+        showPopup: false
+      });
+    },
+    edit(e) {
+      const { id, inventory } = e.currentTarget.dataset;
+      this.setData({
+        inventory, 
+        showPopup: true
+      });
     },
     delete(e) {
       const self = this;
@@ -71,6 +86,24 @@ Component({
           }
         }
       });
+    },
+    submit(e) {
+      const { id } = e.currentTarget.dataset;
+      const self = this;
+      const data = e.detail.value;
+      const ivtd = app.db.collection("inventories").doc(id);
+      ivtd.update({
+        data
+      }).then(res => {
+        console.log(res);
+        getInventoriesRefresh(app.db).then(()=>renderShelf(self));
+        self.setData({
+          showPopup: false
+        });
+        wx.showToast({
+          title: '修改成功',
+        })
+      }).catch(console.error);
     }
   },
 

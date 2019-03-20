@@ -120,7 +120,7 @@
   <view class="cu-dialog text-right" catchtap>
     <view class="cu-form-group">
       <view class='title'>总量</view>
-      <input placeholder="请输入您预估的总量" class='radius' name='input' value="{{inventory.inventory}}" bindblur="onInventoryBlur"></input>
+      <input placeholder="请输入您预估的总量" class='radius' name='inventory' value="{{inventory.inventory}}" bindblur="onInventoryBlur"></input>
       <view class="text-right">
         <text>斤</text>
       </view>
@@ -135,14 +135,14 @@
     </view>
     <view class="cu-form-group">
       <view class='title'>单价</view>
-      <input placeholder="请输入你预想中的单价" class='radius' name='input' value="{{inventory.price}}" bindblur="onPriceBlur"></input>
+      <input placeholder="请输入你预想中的单价" class='radius' name='price' value="{{inventory.price}}" bindblur="onPriceBlur"></input>
       <view class="text-right">
         <text>元/斤</text>
       </view>
     </view>
     <view class="cu-form-group">
       <view class='title'>起售量</view>
-      <input placeholder="至少得这么多您才会卖" class='radius' name='input' value="{{inventory.mini_sales}}" bindblur="onMiniSalesBlur"></input>
+      <input placeholder="至少得这么多您才会卖" class='radius' name='mini_sales' value="{{inventory.mini_sales}}" bindblur="onMiniSalesBlur"></input>
       <view class="text-right">
         <text>斤</text>
       </view>
