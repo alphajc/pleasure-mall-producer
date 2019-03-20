@@ -19,6 +19,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    history: {},
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     showPopup: false,
@@ -50,6 +51,12 @@ Component({
     },
     edit(e) {
       const { id, inventory } = e.currentTarget.dataset;
+      this.data.history = {
+        inventory: inventory.inventory,
+        price: inventory.price,
+        mini_sales: inventory.mini_sales,
+        commit_time: inventory.commit_time
+      };
       this.setData({
         inventory, 
         showPopup: true
@@ -91,9 +98,14 @@ Component({
       const { id } = e.currentTarget.dataset;
       const self = this;
       const data = e.detail.value;
+      const _ = app.db.command;
       const ivtd = app.db.collection("inventories").doc(id);
       ivtd.update({
-        data
+        data: {
+          ...data,
+          commit_time: new Date(),
+          history: _.push([this.data.history])
+        }
       }).then(res => {
         console.log(res);
         getInventoriesRefresh(app.db).then(()=>renderShelf(self));

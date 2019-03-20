@@ -51,7 +51,8 @@ const renderShelf = (context) => {
                         name: found.name,
                         img: imgs[found.pic],
                         dropped: ivt.dropped,
-                        mini_sales: ivt.mini_sales
+                        mini_sales: ivt.mini_sales,
+                        commit_time: ivt.commit_time
                       };
                     }),
                     loadProgress: 100,
